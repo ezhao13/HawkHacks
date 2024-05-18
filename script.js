@@ -1,7 +1,6 @@
-
 let move_speed = 3, gravity = 0.5;
 let bird = document.querySelector('.bird');
-let img = document.getElementById('bird-1');
+let img = document.getElementById('hawk.png');
 let sound_point = new Audio('sounds effect/point.mp3');
 let sound_die = new Audio('sounds effect/die.mp3');
 
@@ -90,7 +89,7 @@ function play() {
             } else {
                 if (bird_props.left < pipe_sprite_props.left + pipe_sprite_props.width && bird_props.left + bird_props.width > pipe_sprite_props.left && bird_props.top < pipe_sprite_props.top + pipe_sprite_props.height && bird_props.top + bird_props.height > pipe_sprite_props.top) {
                     game_state = 'End';
-                    message.innerHTML = '<span style="color: red;">GAME OVER</span><br>Your score is: <span style="color: red;">' + score_val.innerHTML + '</span><br>Final tokens earned: <span style="color: red;">' + tokens_earned + '</span><br>Token Spent: <span style="color: red;">' + gambleAmount + '</span><br>Press Enter To Restart';
+                    message.innerHTML = '<span style="color: red;">GAME OVER</span><br>Your score is: <span style="color: red;">' + score_val.innerHTML + '</span><br>Final tokens earned: <span style="color: red;">' + gambleAmount*(points / 15).toFixed(2) + '</span><br>Tokens spent: <span style="color: red;">' + gambleAmount + '</span><br>Press Enter To Restart';
                     message.classList.add('messageStyle');
                     img.style.display = 'none';
                     sound_die.play();
@@ -118,21 +117,21 @@ function play() {
         bird_dy += gravity;
         document.addEventListener('keydown', (e) => {
             if (e.key === 'ArrowUp' || e.key === ' ') {
-                img.src = 'images/Bird-2.png';
+                img.src = 'images/hawk.png';
                 bird_dy = -7.6;
             }
         });
 
         document.addEventListener('keyup', (e) => {
             if (e.key === 'ArrowUp' || e.key === ' ') {
-                img.src = 'images/Bird-2.png';
+                img.src = 'images/hawk.png';
             }
         });
 
         if (bird_props.top <= 0 || bird_props.bottom >= background.bottom) {
             game_state = 'End';
             message.style.left = '28vw';
-            message.innerHTML = '<span style="color: red;">GAME OVER</span><br>Your score is: <span style="color: red;">' + score_val.innerHTML + '</span><br>Final tokens earned: <span style="color: red;">' + tokens_earned + '</span><br>Gambled amount: <span style="color: red;">' + gambleAmount + '</span><br>Press Enter To Restart';
+            message.innerHTML = '<span style="color: red;">GAME OVER</span><br>Your score is: <span style="color: red;">' + score_val.innerHTML + '</span><br>Final tokens earned: <span style="color: red;">' + (points / 15).toFixed(2) + '</span><br>Tokens Spent: <span style="color: red;">' + gambleAmount + '</span><br>Press Enter To Restart';
             message.classList.add('messageStyle');
             window.location.reload();
             return;
@@ -179,3 +178,4 @@ function play() {
     }
     requestAnimationFrame(create_pipe);
 }
+
