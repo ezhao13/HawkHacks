@@ -2,6 +2,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    position: relative; /* Set position to relative for absolute positioning of .game-item */
 }
 header {
     background-color: #333;
@@ -27,16 +28,31 @@ nav a:hover {
 }
 .container {
     padding: 20px;
+    display: flex;
+    justify-content: space-between; /* Distribute items evenly */
+    position: absolute;
+    top: 50%; /* Place the container at the vertical center */
+    left: 50%; /* Place the container at the horizontal center */
+    transform: translate(-50%, -50%); /* Center the container */
+    width: 90%; /* Set width to 90% of the viewport */
 }
+
 .game-item {
-    border: 1px solid #ddd;
-    padding: 15px;
-    margin-bottom: 10px;
+    border: 5px solid black; /* Black border */
+    padding: 50px; /* Increase padding for bigger buttons */
+    width: calc(33.33% - 60px); /* Set width to 33.33% of the container width minus padding */
+    text-align: center;
+    background-color: #6abf69; /* Lighter shade of green */
+    color: white; /* Set text color to white */
+    cursor: pointer; /* Show pointer cursor on hover */
+    box-sizing: border-box; /* Include padding and border in the width calculation */
 }
+
 .game-item h3 {
     margin: 0;
     font-size: 1.5em;
 }
+
 footer {
     background-color: #333;
     color: white;
