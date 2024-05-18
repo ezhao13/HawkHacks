@@ -77,19 +77,19 @@ function play() {
     requestAnimationFrame(move);
 
     let bird_dy = 0;
-    function apply_gravity() {
+    function apply_gravity() {  
         if (game_state != 'Play') return;
         bird_dy = bird_dy + gravity;
         document.addEventListener('keydown', (e) => {
             if (e.key == 'ArrowUp' || e.key == ' ') {
-                img.src = 'images/Bird-2.png';
+                img.src = 'images/hawk.png';
                 bird_dy = -7.6;
             }
         });
 
         document.addEventListener('keyup', (e) => {
             if (e.key == 'ArrowUp' || e.key == ' ') {
-                img.src = 'images/Bird-2.png';
+                img.src = 'images/hawk.png';
             }
         });
 
