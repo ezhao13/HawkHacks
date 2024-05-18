@@ -14,18 +14,20 @@
     <div class="container">
         <div class="game-item">
             <h3>Default Hawk</h3>
-            <p>Equipped</p>
-            <button onclick="buyGame('Default Hawk')">Buy</button>
+            <p id="pricedefault">Equipped</p>
+            <button onclick="equipDefault()" id="equipdefault">Equip</button>
         </div>
+
         <div class="game-item">
             <h3>Fat Hawk</h3>
-            <p>Price: 30 tokens</p>
-            <button onclick="buyGame('FatHawk')">Buy</button>
+            <p id="pricefat"> Price: 30 tokens</p>
+            <button onclick="buyFatHawk()" id="buyfathawk">Buy</button>
         </div>
+        
         <div class="game-item">
             <h3>Small Hawk</h3>
-            <p>Price: 50 tokens</p>
-            <button onclick="buyGame('SmallHawk')">Buy</button>
+            <p id="pricesmall">Price: 50 tokens</p>
+            <button onclick="buySmallHawk()" id="buysmallhawk">Buy</button>
         </div>
     </div>
     <script src="shopscript.js"></script>
