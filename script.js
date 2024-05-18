@@ -1,4 +1,3 @@
-
 let move_speed = 3, gravity = 0.5;
 let bird = document.querySelector('.bird');
 let img = document.getElementById('hawk.png');
@@ -90,7 +89,7 @@ function play() {
             } else {
                 if (bird_props.left < pipe_sprite_props.left + pipe_sprite_props.width && bird_props.left + bird_props.width > pipe_sprite_props.left && bird_props.top < pipe_sprite_props.top + pipe_sprite_props.height && bird_props.top + bird_props.height > pipe_sprite_props.top) {
                     game_state = 'End';
-                    message.innerHTML = '<span style="color: red;">GAME OVER</span><br>Your score is: <span style="color: red;">' + score_val.innerHTML + '</span><br>Final tokens earned: <span style="color: red;">' + tokens_earned + '</span><br>Gambled amount: <span style="color: red;">' + gambleAmount + '</span><br>Press Enter To Restart';
+                    message.innerHTML = '<span style="color: red;">GAME OVER</span><br>Your score is: <span style="color: red;">' + score_val.innerHTML + '</span><br>Final tokens earned: <span style="color: red;">' + gambleAmount*(points / 15).toFixed(2) + '</span><br>Gambled amount: <span style="color: red;">' + gambleAmount + '</span><br>Press Enter To Restart';
                     message.classList.add('messageStyle');
                     img.style.display = 'none';
                     sound_die.play();
@@ -132,7 +131,7 @@ function play() {
         if (bird_props.top <= 0 || bird_props.bottom >= background.bottom) {
             game_state = 'End';
             message.style.left = '28vw';
-            message.innerHTML = '<span style="color: red;">GAME OVER</span><br>Your score is: <span style="color: red;">' + score_val.innerHTML + '</span><br>Final tokens earned: <span style="color: red;">' + tokens_earned + '</span><br>Gambled amount: <span style="color: red;">' + gambleAmount + '</span><br>Press Enter To Restart';
+            message.innerHTML = '<span style="color: red;">GAME OVER</span><br>Your score is: <span style="color: red;">' + score_val.innerHTML + '</span><br>Final tokens earned: <span style="color: red;">' + (points / 15).toFixed(2) + '</span><br>Gambled amount: <span style="color: red;">' + gambleAmount + '</span><br>Press Enter To Restart';
             message.classList.add('messageStyle');
             window.location.reload();
             return;
@@ -179,3 +178,4 @@ function play() {
     }
     requestAnimationFrame(create_pipe);
 }
+
