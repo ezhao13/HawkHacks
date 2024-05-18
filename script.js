@@ -35,6 +35,8 @@ document.addEventListener('keydown', (e) => {
         score_title.innerHTML = 'Score : ';
         score_val.innerHTML = '0';
         message.classList.remove('messageStyle');
+        // Hide the message element
+        message.style.display = 'none';
         play();
     }
 });
@@ -55,6 +57,8 @@ function play(){
                     game_state = 'End';
                     message.innerHTML = '<span style="color: red;">GAME OVER</span><br>Your score is: <span style="color: red;">' + score_val.innerHTML + '</span><br>Final tokens earned: <span style="color: red;">' + tokens_earned + '</span><br>Press Enter To Restart';
                     message.classList.add('messageStyle');
+                    // Show the message element
+                    message.style.display = 'block';
                     img.style.display = 'none';
                     sound_die.play();
                     return;
