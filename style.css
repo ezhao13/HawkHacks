@@ -72,6 +72,15 @@ body {
     z-index: 100;
 }
 
+.pipe_sprite {
+	position: fixed;
+	top: 40vh;
+	left: 100vw;
+	height: 70vh;
+	width: 6vw;
+	background:radial-gradient(lightgreen 50%, green);
+	border: 5px solid black;
+}
 /* Message styles */
 .message {
     position: relative;
@@ -161,12 +170,3 @@ body {
     background-color: #45a049;
 }
 
-/* Pipe styles */
-.pipe_sprite {
-    position: absolute;
-    width: 52px; /* Adjust width as necessary */
-    height: 320px; /* Adjust height as necessary */
-    background: url('images/pipe.png') no-repeat center center;
-    background-size: cover;
-    z-index: 5;
-}
