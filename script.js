@@ -23,8 +23,7 @@ let pipe_gap = initial_pipe_gap;
 let tokens_earned = 0;
 
 document.addEventListener('keydown', (e) => {
-    
-    if(e.key == 'Enter' && game_state != 'Play'){
+    if (e.key == 'Enter' && game_state != 'Play') {
         document.querySelectorAll('.pipe_sprite').forEach((e) => {
             e.remove();
         });
@@ -41,20 +40,21 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-function play(){
-    function move(){
-        if(game_state != 'Play') return;
+function play() {
+    function move() {
+        if (game_state != 'Play') return;
 
         let pipe_sprite = document.querySelectorAll('.pipe_sprite');
         pipe_sprite.forEach((element) => {
             let pipe_sprite_props = element.getBoundingClientRect();
             bird_props = bird.getBoundingClientRect();
 
-            if(pipe_sprite_props.right <= 0){
+            if (pipe_sprite_props.right <= 0) {
                 element.remove();
-            }else{
-                if(bird_props.left < pipe_sprite_props.left + pipe_sprite_props.width && bird_props.left + bird_props.width > pipe_sprite_props.left && bird_props.top < pipe_sprite_props.top + pipe_sprite_props.height && bird_props.top + bird_props.height > pipe_sprite_props.top){
+            } else {
+                if (bird_props.left < pipe_sprite_props.left + pipe_sprite_props.width && bird_props.left + bird_props.width > pipe_sprite_props.left && bird_props.top < pipe_sprite_props.top + pipe_sprite_props.height && bird_props.top + bird_props.height > pipe_sprite_props.top) {
                     game_state = 'End';
+                    tokens_earned = (points / 15).toFixed(2); // Update tokens earned calculation
                     message.innerHTML = '<span style="color: red;">GAME OVER</span><br>Your score is: <span style="color: red;">' + score_val.innerHTML + '</span><br>Final tokens earned: <span style="color: red;">' + tokens_earned + '</span><br>Press Enter To Restart';
                     message.classList.add('messageStyle');
                     // Show the message element
@@ -62,13 +62,10 @@ function play(){
                     img.style.display = 'none';
                     sound_die.play();
                     return;
-                }else{
-                    if(pipe_sprite_props.right < bird_props.left && pipe_sprite_props.right + move_speed >= bird_props.left && element.increase_score == '1'){
+                } else {
+                    if (pipe_sprite_props.right < bird_props.left && pipe_sprite_props.right + move_speed >= bird_props.left && element.increase_score == '1') {
                         points++;
                         score_val.innerHTML = points;
-                        if (points % 15 === 0) {
-                            tokens_earned++;
-                        }
                         sound_point.play();
                     }
                     element.style.left = pipe_sprite_props.left - move_speed + 'px';
@@ -80,23 +77,23 @@ function play(){
     requestAnimationFrame(move);
 
     let bird_dy = 0;
-    function apply_gravity(){
-        if(game_state != 'Play') return;
+    function apply_gravity() {
+        if (game_state != 'Play') return;
         bird_dy = bird_dy + gravity;
         document.addEventListener('keydown', (e) => {
-            if(e.key == 'ArrowUp' || e.key == ' '){
+            if (e.key == 'ArrowUp' || e.key == ' ') {
                 img.src = 'images/Bird-2.png';
                 bird_dy = -7.6;
             }
         });
 
         document.addEventListener('keyup', (e) => {
-            if(e.key == 'ArrowUp' || e.key == ' '){
+            if (e.key == 'ArrowUp' || e.key == ' ') {
                 img.src = 'images/Bird-2.png';
             }
         });
 
-        if(bird_props.top <= 0 || bird_props.bottom >= background.bottom){
+        if (bird_props.top <= 0 || bird_props.bottom >= background.bottom) {
             game_state = 'End';
             message.style.left = '28vw';
             window.location.reload();
@@ -111,10 +108,10 @@ function play(){
 
     let pipe_separation = 0;
 
-    function create_pipe(){
-        if(game_state != 'Play') return;
+    function create_pipe() {
+        if (game_state != 'Play') return;
 
-        if(pipe_separation > 115){
+        if (pipe_separation > 115) {
             pipe_separation = 0;
 
             let pipe_posi = Math.floor(Math.random() * 43) + 8;
