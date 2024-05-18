@@ -13,7 +13,7 @@ body {
     justify-content: center;
     min-height: 100vh;
     background: #e0f7fa;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Monaco, monospace;
 }
 
 /* Container styles */
@@ -73,14 +73,15 @@ body {
 }
 
 .pipe_sprite {
-	position: fixed;
-	top: 40vh;
-	left: 100vw;
-	height: 70vh;
-	width: 6vw;
-	background:radial-gradient(lightgreen 50%, green);
-	border: 5px solid black;
+    position: fixed;
+    top: 40vh;
+    left: 100vw;
+    height: 70vh;
+    width: 6vw;
+    background: radial-gradient(lightgreen 50%, green);
+    border: 5px solid black;
 }
+
 /* Message styles */
 .message {
     position: relative;
@@ -107,11 +108,10 @@ body {
     -webkit-text-stroke-color: black;
     top: 10px;
     left: 10px;
-    font-family: Arial, Helvetica, sans-serif;
 }
 
 .score_val {
-    color: gold;
+    color: yellow;
     font-weight: bold;
 }
 
@@ -169,4 +169,3 @@ body {
 #start-game:hover {
     background-color: #45a049;
 }
-
