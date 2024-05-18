@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
             message.innerHTML = 'Press Enter to Start';
             message.classList.remove('messageStyle');
         } else {
-            alert('Please enter a valid gamble amount.');
+            alert('Please enter a valid token amount.');
         }
     });
 });
