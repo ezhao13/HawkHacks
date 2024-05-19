@@ -117,14 +117,14 @@ function play() {
         bird_dy += gravity;
         document.addEventListener('keydown', (e) => {
             if (e.key === 'ArrowUp' || e.key === ' ') {
-                img.src = 'images/hawk.png';
+                img.src = 'images/hawk.png'; // Update hawk image on key press
                 bird_dy = -7.6;
             }
         });
 
         document.addEventListener('keyup', (e) => {
             if (e.key === 'ArrowUp' || e.key === ' ') {
-                img.src = 'images/hawk.png';
+                img.src = 'images/hawk.png'; // Update hawk image on key release
             }
         });
 

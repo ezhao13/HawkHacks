@@ -2,6 +2,10 @@ let fatHawkOwned = false;
 let smallHawkOwned = false;
 let equippedHawk = 'default';
 
+var defaultEquip = true;
+var fatEquip = false;
+var smallEquip = false;
+
 function buyFatHawk() {
     if (!fatHawkOwned) {
         fatHawkOwned = true;
@@ -20,13 +24,19 @@ function buySmallHawk() {
     }
 }
 
-function equipDefault() {
+function equipDefaultHawk() {
+    defaultEquip = true;
+    smallEquip = false;
+    fatEquip = false;
     equippedHawk = 'default';
     updateUI();
 }
 
 function equipFatHawk() {
     if (fatHawkOwned) {
+        fatEquip = true;
+        smallEquip = false;
+        defaultEquip = false;
         equippedHawk = 'fat';
         updateUI();
     }
@@ -34,6 +44,9 @@ function equipFatHawk() {
 
 function equipSmallHawk() {
     if (smallHawkOwned) {
+        smallEquip = true;
+        fatEquip = false;
+        defaultEquip = false;
         equippedHawk = 'small';
         updateUI();
     }
