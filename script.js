@@ -5,7 +5,6 @@ let sound_point = new Audio('sounds effect/point.mp3');
 let sound_die = new Audio('sounds effect/die.mp3');
 
 let bird_props = bird.getBoundingClientRect();
-
 let background = document.querySelector('.background').getBoundingClientRect();
 
 let score_val = document.querySelector('.score_val');
@@ -50,9 +49,10 @@ document.addEventListener('DOMContentLoaded', () => {
     startGameButton.addEventListener('click', () => {
         gambleAmount = parseInt(gambleAmountInput.value, 10);
         if (gambleAmount > 0) {
-            // Hide the gamble section and start the game
+            // Hide the gamble section and display the introduction message
             document.querySelector('.gamble-section').style.display = 'none';
-            message.innerHTML = 'Press Enter to Start';
+            message.innerHTML = 'Press Enter to Start<p><span style="color: red;">&uarr;</span> Press spacebar to jump</p>';
+            message.style.display = 'block'; // Show message when the game is ready to start
             message.classList.remove('messageStyle');
         } else {
             alert('Please enter a valid token amount.');
@@ -69,9 +69,9 @@ document.addEventListener('keydown', (e) => {
         bird.style.top = '40vh';
         game_state = 'Play';
         message.innerHTML = '';
+        message.style.display = 'none';  // Hide message when game starts
         score_title.innerHTML = 'Score : ';
         score_val.innerHTML = '0';
-        message.classList.remove('messageStyle');
         backToHome.style.display = 'none';  // Hide the back-to-home button at the start of the game
         play();
     }
@@ -91,7 +91,8 @@ function play() {
             } else {
                 if (bird_props.left < pipe_sprite_props.left + pipe_sprite_props.width && bird_props.left + bird_props.width > pipe_sprite_props.left && bird_props.top < pipe_sprite_props.top + pipe_sprite_props.height && bird_props.top + bird_props.height > pipe_sprite_props.top) {
                     game_state = 'End';
-                    message.innerHTML = '<span style="color: red;">GAME OVER</span><br>Your score is: <span style="color: red;">' + score_val.innerHTML + '</span><br>Final tokens earned: <span style="color: red;">' + gambleAmount*(points / 15).toFixed(2) + '</span><br>Tokens spent: <span style="color: red;">' + gambleAmount + '</span><br>Press Enter To Restart';
+                    message.innerHTML = `<span style="color: red;">GAME OVER</span><br>Your score is: <span style="color: red;">${score_val.innerHTML}</span><br>Final tokens earned: <span style="color: red;">${(gambleAmount * (points / 15)).toFixed(2)}</span><br>Tokens spent: <span style="color: red;">${gambleAmount}</span><br>Press Enter To Restart`;
+                    message.style.display = 'block';  // Show message on game over
                     message.classList.add('messageStyle');
                     img.style.display = 'none';
                     backToHome.style.display = 'block';  // Show the back-to-home button when the game ends
@@ -133,8 +134,8 @@ function play() {
 
         if (bird_props.top <= 0 || bird_props.bottom >= background.bottom) {
             game_state = 'End';
-            message.style.left = '28vw';
-            message.innerHTML = '<span style="color: red;">GAME OVER</span><br>Your score is: <span style="color: red;">' + score_val.innerHTML + '</span><br>Final tokens earned: <span style="color: red;">' + (points / 15).toFixed(2) + '</span><br>Tokens Spent: <span style="color: red;">' + gambleAmount + '</span><br>Press Enter To Restart';
+            message.innerHTML = `<span style="color: red;">GAME OVER</span><br>Your score is: <span style="color: red;">${score_val.innerHTML}</span><br>Final tokens earned: <span style="color: red;">${(points / 15).toFixed(2)}</span><br>Tokens Spent: <span style="color: red;">${gambleAmount}</span><br>Press Enter To Restart`;
+            message.style.display = 'block';  // Show message on game over
             message.classList.add('messageStyle');
             backToHome.style.display = 'block';  // Show the back-to-home button when the game ends
             window.location.reload();
@@ -150,25 +151,25 @@ function play() {
 
     function create_pipe() {
         if (game_state !== 'Play') return;
-    
+
         if (pipe_separation > 115) {
             pipe_separation = 0;
-    
+
             let pipe_posi = Math.floor(Math.random() * 43) + 8;
             let pipe_sprite_inv = document.createElement('div');
             pipe_sprite_inv.className = 'pipe_sprite';
-            pipe_sprite_inv.style.top = pipe_posi - 70 + 'vh';
+            pipe_sprite_inv.style.top = `${pipe_posi - 70}vh`;
             pipe_sprite_inv.style.left = '100vw';
-    
+
             document.body.appendChild(pipe_sprite_inv);
             let pipe_sprite = document.createElement('div');
             pipe_sprite.className = 'pipe_sprite';
-            pipe_sprite.style.top = pipe_posi + pipe_gap + 'vh';
+            pipe_sprite.style.top = `${pipe_posi + pipe_gap}vh`;
             pipe_sprite.style.left = '100vw';
             pipe_sprite.increase_score = '1';
-    
+
             document.body.appendChild(pipe_sprite);
-    
+
             pipes_passed++;
             if (points > 0 && points % 5 === 0) {
                 move_speed++;
@@ -176,8 +177,7 @@ function play() {
             if (points >= 10 && points % 10 === 0) {
                 pipe_gap -= 5;
             }
-    
-            // Remove off-screen pipes
+
             document.querySelectorAll('.pipe_sprite').forEach((element) => {
                 if (element.getBoundingClientRect().right <= 0) {
                     element.remove();
@@ -187,6 +187,6 @@ function play() {
         pipe_separation++;
         requestAnimationFrame(create_pipe);
     }
-    
+
     requestAnimationFrame(create_pipe);
 }
