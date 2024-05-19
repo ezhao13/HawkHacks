@@ -98,3 +98,29 @@ footer {
     -o-background-size: cover;
     background-size: cover;
 }
+
+/* Back to Home Page button styles */
+.back-to-home {
+    position: fixed; /* Change position to fixed */
+    z-index: 9999; /* Increase z-index to ensure it's always on top */
+    bottom: 100px; /* Adjust its position from the bottom */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Center horizontally */
+    text-align: center;
+}
+
+.back-to-home .btn {
+    padding: 15px 30px;
+    font-size: 1.2em;
+    color: white;
+    background-color: #0288d1;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-decoration: none; /* Ensure the text link style doesn't appear */
+}
+
+.back-to-home .btn:hover {
+    background-color: #0277bd;
+}
