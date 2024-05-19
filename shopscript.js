@@ -3,6 +3,7 @@ function buyFatHawk() {
     button.innerHTML="Equip";
     button.setAttribute("onClick", "javascript: equipFatHawk();");
     document.getElementById('pricefat').innerHTML = ("Owned");
+    return True;
 }
 
 function buySmallHawk() {
@@ -10,16 +11,23 @@ function buySmallHawk() {
     button.innerHTML="Equip";
     button.setAttribute("onClick", "javascript: equipFatHawk();");
     document.getElementById('pricesmall').innerHTML = ("Owned");
+    return True;
 }
 
 function equipDefault() {
-    alert("work")
+    //document.getElementById('pricedefault').innerHTML = ("Equipped");
+    //document.getElementById('pricefat').innerHTML = ("Owned");
+    //document.getElementById('pricesmall').innerHTML = ("Owned");
 }
 
 function equipFatHawk() {
-    alert("work")
+    //document.getElementById('pricedefault').innerHTML = ("Owned");
+    //document.getElementById('pricefat').innerHTML = ("Equipped");
+    //document.getElementById('pricesmall').innerHTML = ("Owned");
 }
 
 function equipSmallHawk() {
-    alert("work")
+    //document.getElementById('pricedefault').innerHTML = ("Owned");
+    //document.getElementById('pricefat').innerHTML = ("Owned");
+    //document.getElementById('pricesmall').innerHTML = ("Equipped");
 }
