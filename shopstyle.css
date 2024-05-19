@@ -2,7 +2,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    position: relative; /* Set position to relative for absolute positioning of .game-item */
+    position: relative;
 }
 header {
     background-color: #333;
@@ -29,28 +29,54 @@ nav a:hover {
 .container {
     padding: 20px;
     display: flex;
-    justify-content: space-between; /* Distribute items evenly */
+    justify-content: space-between;
     position: absolute;
-    top: 50%; /* Place the container at the vertical center */
-    left: 50%; /* Place the container at the horizontal center */
-    transform: translate(-50%, -50%); /* Center the container */
-    width: 90%; /* Set width to 90% of the viewport */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
 }
 
 .game-item {
-    border: 5px solid black; /* Black border */
-    padding: 50px; /* Increase padding for bigger buttons */
-    width: calc(33.33% - 60px); /* Set width to 33.33% of the container width minus padding */
+    border: 5px solid black;
+    padding: 60px 20px 20px 20px;
+    width: calc(33.33% - 40px);
     text-align: center;
-    background-color: #6abf69; /* Lighter shade of green */
-    color: white; /* Set text color to white */
-    cursor: pointer; /* Show pointer cursor on hover */
-    box-sizing: border-box; /* Include padding and border in the width calculation */
+    background-color: #6abf69;
+    color: white;
+    cursor: pointer;
+    box-sizing: border-box;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-.game-item h3 {
-    margin: 0;
-    font-size: 1.5em;
+.hawk-image {
+    width: 100px;
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.default-hawk-image {
+    top: -94px;
+    width: 200px;
+    height: auto;
+}
+
+.fat-hawk-image {
+    top: -100px;
+}
+
+.small-hawk-image {
+    top: -110px;
+}
+
+.game-item h3, .game-item p, .game-item button {
+    margin: 10px 0;
 }
 
 footer {
@@ -62,6 +88,7 @@ footer {
     bottom: 0;
     width: 100%;
 }
+
 .background {
     height: 100vh;
     width: 100vw;
@@ -70,23 +97,4 @@ footer {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-}
-
-
-.default-hawk {
-    position: relative; /* Set position to relative for containing the absolute positioned image */
-    overflow: hidden; /* Ensure the image doesn't overflow outside the box */
-}
-
-.default-hawk::before {
-    content: '';
-    position: absolute; /* Position the image absolutely */
-    top: -70px; 
-    left: 0; /* Align the image to the left edge of the box */
-    width: 100%; 
-    height: 50px; 
-    background-image: url('images/hawk.png'); 
-    background-repeat: no-repeat;
-    background-position: center;
-    z-index: 1; 
 }
