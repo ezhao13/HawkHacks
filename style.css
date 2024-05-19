@@ -82,9 +82,9 @@ body {
 	border: 5px solid black;
 }
 
-/* Message styles */
+
 .message {
-    position: relative;
+    position: absolute;
     z-index: 10;
     color: black;
     margin-top: 40px;
@@ -95,6 +95,8 @@ body {
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+
+
 
 /* Score styles */
 .score {
