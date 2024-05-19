@@ -1,0 +1,94 @@
+/* Main container styles */
+.container {
+    text-align: center;
+    padding: 20px; /* Reduce padding */
+    display: inline-block; /* Display as inline block */
+    border: 5px solid black; /* Smaller border */
+    border-radius: 20px; /* Make it more rectangular */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 80%; /* Limit width to 80% of the viewport */
+}
+
+.container h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #0288d1; /* Dark blue color for heading */
+}
+
+.blue-text {
+    color: blue;
+}
+
+.background {
+    height: 100vh;
+    width: 100vw;
+    background: url('images/flappyBackground.png') no-repeat center center fixed;
+    background-size: cover;
+    position: absolute;
+    z-index: -1;
+}
+
+/* Section styles */
+section {
+    margin-bottom: 20px;
+    color: black; /* Change text color to black */
+}
+
+/* Section heading styles */
+h2 {
+    margin-bottom: 10px;
+    color: black; /* Change text color to black */
+}
+
+/* Paragraph styles */
+p {
+    margin-bottom: 5px;
+    color: black; /* Change text color to black */
+}
+
+/* Game token amount styles */
+#game-token-amount {
+    font-weight: bold;
+    color: #007bff; /* Blue color for game token amount */
+}
+
+/* Make all numerical values plus the dollar sign the same shade of blue */
+.number,
+.dollar-sign {
+    color: #007bff; /* Blue color for numbers and dollar sign */
+}
+
+/* Ensure everything else remains black */
+span:not(.number):not(.dollar-sign) {
+    color: black;
+}
+
+/* Ensure that all text is black by default, with exceptions for .number and .dollar-sign */
+body,
+.container,
+section,
+h2,
+p {
+    color: black;
+}
+
+/* Specific styles for tokens display */
+.token-display {
+    display: inline-block;
+}
+
+.token-display .number {
+    color: #007bff; /* Blue color for the number before tokens */
+}
+
+.token-display .text {
+    color: black; /* Black color for the text */
+}
+
+.token-display .dollar-sign {
+    color: #007bff; /* Blue color for the dollar sign */
+}
+
+.token-display .number-after {
+    color: #007bff; /* Blue color for the number after the dollar sign */
+}
