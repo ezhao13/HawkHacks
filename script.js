@@ -11,6 +11,7 @@ let background = document.querySelector('.background').getBoundingClientRect();
 let score_val = document.querySelector('.score_val');
 let message = document.querySelector('.message');
 let score_title = document.querySelector('.score_title');
+let backToHome = document.querySelector('.back-to-home');
 
 let game_state = 'Start';
 img.style.display = 'none';
@@ -71,6 +72,7 @@ document.addEventListener('keydown', (e) => {
         score_title.innerHTML = 'Score : ';
         score_val.innerHTML = '0';
         message.classList.remove('messageStyle');
+        backToHome.style.display = 'none';  // Hide the back-to-home button at the start of the game
         play();
     }
 });
@@ -92,6 +94,7 @@ function play() {
                     message.innerHTML = '<span style="color: red;">GAME OVER</span><br>Your score is: <span style="color: red;">' + score_val.innerHTML + '</span><br>Final tokens earned: <span style="color: red;">' + gambleAmount*(points / 15).toFixed(2) + '</span><br>Tokens spent: <span style="color: red;">' + gambleAmount + '</span><br>Press Enter To Restart';
                     message.classList.add('messageStyle');
                     img.style.display = 'none';
+                    backToHome.style.display = 'block';  // Show the back-to-home button when the game ends
                     sound_die.play();
                     return;
                 } else {
@@ -133,6 +136,7 @@ function play() {
             message.style.left = '28vw';
             message.innerHTML = '<span style="color: red;">GAME OVER</span><br>Your score is: <span style="color: red;">' + score_val.innerHTML + '</span><br>Final tokens earned: <span style="color: red;">' + (points / 15).toFixed(2) + '</span><br>Tokens Spent: <span style="color: red;">' + gambleAmount + '</span><br>Press Enter To Restart';
             message.classList.add('messageStyle');
+            backToHome.style.display = 'block';  // Show the back-to-home button when the game ends
             window.location.reload();
             return;
         }
@@ -186,4 +190,3 @@ function play() {
     
     requestAnimationFrame(create_pipe);
 }
-
