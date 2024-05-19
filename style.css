@@ -173,9 +173,14 @@ body {
 
 /* Back to Home Page button styles */
 .back-to-home {
-    margin-top: 40px;
+    position: fixed; /* Change position to fixed */
+    z-index: 9999; /* Increase z-index to ensure it's always on top */
+    bottom: 100px; /* Adjust its position from the bottom */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Center horizontally */
     text-align: center;
 }
+
 
 .back-to-home .btn {
     padding: 15px 30px;
